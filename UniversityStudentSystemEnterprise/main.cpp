@@ -76,6 +76,27 @@ int main()
 		classRoster->add(studentID, firstName, lastName, emailAddress, stoi(studentAge), stoi(daysInCourse1), stoi(daysInCourse2), stoi(daysInCourse3), degreeProgram);
 	}
 
+	// Print all student info
+	classRoster->printAll();
+
+	// Print invalid emails
+	/////////////////////////////////////////////////////////////////////////////////////
+
+	// Loop through classRosterArray and print average days in courses for all students
+	/////////////////////////////////////////////////////////////////////////////////////
+
+	// Print by degree program
+	classRoster->printByDegreeProgram(DegreeProgram::SOFTWARE);
+
+	// Remove studentID A3
+	classRoster->remove("A3");
+
+	// Print all student info
+	classRoster->printAll();
+
+	// Remove studentID A3
+	classRoster->remove("A3");
+
 	// Call Roster deconstructor
 	delete classRoster;
 

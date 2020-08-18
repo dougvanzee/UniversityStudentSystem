@@ -19,7 +19,7 @@ private:
 	string lastName = "";
 	string emailAddress = "";
 	int studentAge = -1;
-	int daysToCompleteEachCourse[3];
+	int daysToCompleteEachCourse[3] = { 0, 0, 0 };
 	DegreeProgram degreeProgram = DegreeProgram::SECURITY;
 
 public:
@@ -48,6 +48,10 @@ public:
 	int* getDaysToCompleteEachCourse() { return daysToCompleteEachCourse; }
 	// Days to Complete Course Set
 	void setDaysToCompleteEachCourse(int daysToCompleteEachCourse[3]);
+
+	// Degree Program get/set
+	DegreeProgram getDegreeProgram() { return degreeProgram; }
+	void setDegreeProgram(DegreeProgram degreeProgram) { this->degreeProgram = degreeProgram; }
 
 	// Print specific information about the student
 	void print();

@@ -1,4 +1,5 @@
 #pragma once
+#include <vector>
 #include "student.h"
 
 class Roster
@@ -9,7 +10,7 @@ public:
 
 private:
 
-	Student* classRosterArray[5]; // Holds an array of pointers for all students
+	vector<Student*> classRosterArray; // Holds an array of pointers for all students
 
 
 public:
