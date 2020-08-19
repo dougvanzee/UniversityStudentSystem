@@ -6,14 +6,21 @@ class Roster
 {
 public:
 	
-	Roster(); // Constructor
+	// Constructor
+	Roster(); 
+
+	// Deconstructor
+	~Roster();
 
 private:
 
-	vector<Student*> classRosterArray; // Holds an array of pointers for all students
-
+	// Holds an array of pointers for all students
+	vector<Student*> classRosterArray; 
 
 public:
+
+	// Get the vector of student pointers
+	vector<Student*> getClassRosterArray() { return classRosterArray; }
 
 	// Adds a student to the classRosterArray
 	void add(
@@ -39,6 +46,7 @@ public:
 	void printAverageDaysInCourse(string studentID);
 
 	// Displays students with an improperly formatted email address
+	// Note that it only checks whether it contains an '@' symbol and whether a '.' follows it
 	void printInvalidEmails();
 
 	// Prints out student information for all students in a particular degree

@@ -1,7 +1,6 @@
 #include "student.h"
 #include <iostream>
 
-// Constructor
 Student::Student(string studentId, string firstName, string lastName, string emailAddress, int studentAge, int daysInCourse1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeProgram)
 {
 	// Set student info
@@ -16,18 +15,20 @@ Student::Student(string studentId, string firstName, string lastName, string ema
 	this->degreeProgram = degreeProgram;
 }
 
-// Set the days to complete each course var
+
 void Student::setDaysToCompleteEachCourse(int daysToCompleteEachCourse[3])
 {
+	// Set the days to complete each course var
 	for (int i = 0; i < 3; i++)
 	{
 		this->daysToCompleteEachCourse[i] = daysToCompleteEachCourse[i];
 	}
 }
 
-// Print student info to the console
+
 void Student::print()
 {
+	// Print student info to the console
 	cout << studentId << "\t";
 	cout << "First Name: " << firstName << "\t";
 	cout << "Last Name: " << lastName << "\t";

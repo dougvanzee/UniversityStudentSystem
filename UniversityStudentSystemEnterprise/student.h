@@ -14,13 +14,13 @@ public:
 private:
 
 	// Student private information
-	string studentId = "";
-	string firstName = "";
-	string lastName = "";
-	string emailAddress = "";
-	int studentAge = -1;
-	int daysToCompleteEachCourse[3] = { 0, 0, 0 };
-	DegreeProgram degreeProgram = DegreeProgram::SECURITY;
+	string studentId;
+	string firstName;
+	string lastName;
+	string emailAddress;
+	int studentAge;
+	int daysToCompleteEachCourse[3];
+	DegreeProgram degreeProgram;
 
 public:
 

@@ -17,6 +17,7 @@ int main()
 	cout << "Course: Scripting and Programming - Applications – C867" << endl;
 	cout << "Written in C++ by Doug Van Zee" << endl;
 	cout << "Student ID #001470568" << endl;
+	cout << endl;
 
 	// Create a class roster
 	Roster* classRoster = new Roster();
@@ -80,11 +81,24 @@ int main()
 	classRoster->printAll();
 
 	// Print invalid emails
-	/////////////////////////////////////////////////////////////////////////////////////
+	classRoster->printInvalidEmails();
 
 	// Loop through classRosterArray and print average days in courses for all students
-	/////////////////////////////////////////////////////////////////////////////////////
+	for (int i = 0; i < classRoster->getClassRosterArray().size(); i++)
+	{
+		// Save student ID
+		string studentID = classRoster->getClassRosterArray().at(i)->getStudentId();
 
+		// Print average days in course
+		classRoster->printAverageDaysInCourse(studentID);
+
+		// If last entry, add extra newline for readability
+		if (i == classRoster->getClassRosterArray().size() - 1)
+		{
+			cout << endl;
+		}
+	}
+	
 	// Print by degree program
 	classRoster->printByDegreeProgram(DegreeProgram::SOFTWARE);
 

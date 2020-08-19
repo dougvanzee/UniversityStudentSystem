@@ -8,6 +8,14 @@ Roster::Roster()
 
 }
 
+Roster::~Roster()
+{
+	for (int i = 0; i < classRosterArray.size(); i++)
+	{
+		delete classRosterArray[i];
+	}
+}
+
 void Roster::add(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeProgram)
 {
 	classRosterArray.push_back(new Student(studentID, firstName, lastName, emailAddress, age, daysInCourse1, daysInCourse2, daysInCourse3, degreeProgram));
@@ -29,16 +37,15 @@ void Roster::remove(string studentID)
 		}
 	}
 
-	// Output message
 	if (bStudentIdFound)
 	{
 		// Output success message
-		cout << "Student successfully removed from roster." << endl;
+		cout << "Student with ID '" << studentID << "' successfully removed from roster." << endl;
 	}
 	else
 	{
 		// Output error message
-		cout << "Error: Student ID was not located in roster." << endl;
+		cout << "Error: Student with ID '" << studentID << "' was not located in roster." << endl;
 	}
 
 	// Additional newline for spacing
@@ -59,7 +66,8 @@ void Roster::printAll()
 
 void Roster::printAverageDaysInCourse(string studentID)
 {
-	int studentIndex = -1; // Student index that was found
+	// Student index that was found
+	int studentIndex = -1; 
 
 	// Find student ID in Vector
 	for (int i = 0; i < classRosterArray.size(); i++)
@@ -67,7 +75,7 @@ void Roster::printAverageDaysInCourse(string studentID)
 		if (classRosterArray.at(i)->getStudentId() == studentID)
 		{
 			// If found, delete student and break from loop
-			classRosterArray.erase(classRosterArray.begin() + i);
+			// classRosterArray.erase(classRosterArray.begin() + i);
 			studentIndex = i;
 			break;
 		}
@@ -76,12 +84,17 @@ void Roster::printAverageDaysInCourse(string studentID)
 	// If student found, output average days in course. Else output error message.
 	if (studentIndex != -1)
 	{
+		// Get days in courses
 		int* daysToCompleteEachCourse = classRosterArray.at(studentIndex)->getDaysToCompleteEachCourse();
 
+		// Add all days
 		int totalDaysInCourses = daysToCompleteEachCourse[0] + daysToCompleteEachCourse[1] + daysToCompleteEachCourse[2];
+
+		// Average days
 		double averageDays = static_cast<double>(totalDaysInCourses) / 3.0;
 
-		cout << setprecision(2) << "The student's average number of days in each course is: " << averageDays << endl;
+		// Output average
+		cout << setprecision(2) << studentID << "'s average days in course: " << averageDays << endl;
 	}
 	else
 	{
@@ -92,7 +105,56 @@ void Roster::printAverageDaysInCourse(string studentID)
 
 void Roster::printInvalidEmails()
 {
+	// Whether any invalid emails were outputted.
+	bool bOutputtedInvalidEmail = false; 
 
+	// Prints invalid email header
+	cout << "Invalid Emails:" << endl;
+
+	// Loop through each student
+	for (int i = 0; i < classRosterArray.size(); i++)
+	{
+		// Gets student email address
+		string emailAddress = classRosterArray.at(i)->getEmailAddress(); 
+		// Whether this students email is valid
+		bool bCorrectFormat = true; 
+
+		// Get index of @, if it exists
+		int atSymbolIndex = emailAddress.find('@');
+
+		// If @ index has no position, correct format is false
+		if (atSymbolIndex == string::npos)
+		{
+			bCorrectFormat = false;
+		}
+		else
+		{
+			// substring after the @ symbol
+			string subString = emailAddress.substr(atSymbolIndex); 
+
+			// If substring doesn't have a period, it is incorrectly formatted
+			if (subString.find('.') == string::npos)
+			{
+				bCorrectFormat = false;
+			}
+		}
+		
+		// Output email if invalid
+		if (!bCorrectFormat)
+		{
+			bOutputtedInvalidEmail = true;
+			cout << emailAddress << endl;
+		}
+	}
+
+	// Output message if all emails correct
+	if (!bOutputtedInvalidEmail)
+	{
+		cout << "No invalid emails found." << endl;
+	}
+
+	// Add extra newline for spacing
+	cout << endl;
 }
 
 void Roster::printByDegreeProgram(DegreeProgram degreeProgram)
