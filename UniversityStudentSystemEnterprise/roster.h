@@ -46,7 +46,7 @@ public:
 	void printAverageDaysInCourse(string studentID);
 
 	// Displays students with an improperly formatted email address
-	// Note that it only checks whether it contains an '@' symbol and whether a '.' follows it
+	// Note that it only checks whether it contains a space in it and if it contains an '@' symbol followed by a '.'
 	void printInvalidEmails();
 
 	// Prints out student information for all students in a particular degree

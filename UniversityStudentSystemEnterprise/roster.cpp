@@ -122,8 +122,8 @@ void Roster::printInvalidEmails()
 		// Get index of @, if it exists
 		int atSymbolIndex = emailAddress.find('@');
 
-		// If @ index has no position, correct format is false
-		if (atSymbolIndex == string::npos)
+		// If @ index has no position or if space found, correct format is false
+		if (atSymbolIndex == string::npos  || emailAddress.find(' ') != string::npos)
 		{
 			bCorrectFormat = false;
 		}
