@@ -14,9 +14,8 @@ using namespace std;
 int main()
 {
 	// Print out program information
-	cout << "Course: Scripting and Programming - Applications – C867" << endl;
+	cout << "Course: Scripting and Programming - Applications â€“ C867" << endl;
 	cout << "Written in C++ by Doug Van Zee" << endl;
-	cout << "Student ID #001470568" << endl;
 	cout << endl;
 
 	// Create a class roster
